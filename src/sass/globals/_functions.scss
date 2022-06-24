@@ -1,0 +1,5 @@
+@use "sass:math";
+
+@function convertToRem($pixel, $font-base: 16) {
+  @return math.div($pixel, $font-base) + rem;
+}

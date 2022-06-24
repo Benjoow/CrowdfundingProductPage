@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap');
+
+*,
+*::after, 
+*::before {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, ul, p, button, input  {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: 1.1;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

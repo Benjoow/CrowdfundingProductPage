@@ -1,0 +1,64 @@
+:root {
+
+  /* --------
+  BACKGROUND
+  ---------*/
+  
+// CARDS
+
+  --backgroundMainSection: hsl(0, 0%, 98%);
+  --backgroundCard: hsl(0, 100%, 100%);
+  --borderColor-Cards: hsl(0, 0%, 88%);
+  --borderColor-SecondaryCards: hsl(0, 0%, 88%);
+  --bulletLineSeparator: hsl(0, 0%, 88%);
+
+// BUTTON
+  --backgroundButton: hsl(176, 50%, 47%);
+  --backgroundButton-disabled: hsl(0, 0%, 80%);
+  --backgroundButton-hover: hsl(176, 72%, 28%);
+
+
+// PROGRESS BAR
+  --progressBar: hsl(0, 0%, 90%);
+  --progressBarLoading: hsl(176, 50%, 47%);
+
+// MODAL
+  --overlay-modal: hsla(100, 0%, 0%, 0.4);
+  --background-modal: hsl(0, 100%, 100%);
+
+//CARD MODAL
+
+  --border-modal-card-active: hsl(176, 50%, 47%);
+
+// INPUT RADIO 
+
+  --background-inputRadio: hsl(176, 50%, 47%);
+  --border-inputRadio: hsl(0, 0%, 88%);
+  
+
+  /* --------
+  FONT-COLOR
+  ---------*/
+
+  --Primary-Font: hsl(0, 0%, 0);
+  --Secondary-Font: hsl(0, 0%, 48%);
+  --Pledge-Font: hsl(176, 50%, 47%);
+  --MenuColor: hsl(0, 100%, 100%);
+  --Bookmarked-Font: hsl(176, 72%, 28%);
+
+  
+    /* --------
+  MARGIN
+  ---------*/
+
+  --card-rewards-margin: 20;
+  
+}
+
+$breakpoint-L: 720px;
+
+@mixin breakPointL {
+  @media screen and (min-width: $breakpoint-L) {
+    @content;
+  }
+}
