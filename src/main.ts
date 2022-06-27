@@ -3,7 +3,7 @@ const bodyScroll = (elem: HTMLDivElement | null) => {
   elem?.classList.contains('active') ? body.style.overflowY = 'hidden' : body.style.overflowY = 'auto';
 }
 
-const navToggle = () => {
+const openMenu = () => {
   const burger_menu: HTMLDivElement = document.querySelector("#nav__toggle")!;
   const modalOverlay: HTMLDivElement = document.querySelector(".nav-bar__modal-overlay")!;
 
@@ -21,12 +21,44 @@ const navToggle = () => {
   })  
 }
 
+const resetRadioCardsStyle = () => {
+  document.querySelectorAll(".card-modal").forEach( item => {
+    item.classList.remove('active');
+  })
+}
+
+// const openModal = (modalName: HTMLDivElement) => {
+//   document.querySelector(`${modalName}`)?.classList.add('active');
+// }
+
+// const closeModal = (modalName: HTMLDivElement) => {
+//   document.querySelector(`${modalName}`)?.classList.remove('active');
+// }
+
+
+const toggleModal = (modalName: HTMLDivElement | null) => {
+  modalName?.classList.toggle('active');
+}
+
 const selectedCardRadioButton = () => {
-  const radioButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[type="radio"')!;
+  const radioButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[type="radio"]')!;
   radioButtons.forEach( item => {
     item.addEventListener('change', () => {
-      item.checked ? item.closest('.card-modal')?.classList.add("active") : item.closest('.card-modal')?.classList.remove('active');
+      resetRadioCardsStyle();
+      if(item.checked) 
+        item.closest('.card-modal')?.classList.add('active');
     })
+  })
+}
+
+const toggleModalRewards = () => {
+  const modalRewards: HTMLDivElement | null = document.querySelector('.reward-modal');
+  const modalCross: HTMLImageElement | null = document.querySelector('.modal__close');
+  document.querySelector('.content__bottom button')?.addEventListener('click', () => {
+    toggleModal(modalRewards);
+  })
+  modalCross?.addEventListener('click', () => {
+    toggleModal(modalRewards);
   })
 }
 
@@ -37,10 +69,12 @@ const bookmarkProject = () => {
     bookmark.classList.contains('active') ? bookmarkText.textContent = 'Bookmark' : bookmarkText.textContent = 'Bookmarked'; 
     bookmark.classList.toggle('active');  
   })
+
 }
 
-navToggle();
+openMenu();
 bookmarkProject();
 selectedCardRadioButton();
+toggleModalRewards();
 
 export {};

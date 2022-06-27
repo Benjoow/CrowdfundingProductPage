@@ -86,6 +86,7 @@ body {
     font-size: f.convertToRem(14);
     color: var(--Secondary-Font);
     line-height: 160%;
+    font-weight: 400;
   }
 }
 
@@ -98,15 +99,15 @@ body {
   p {
     font-size: f.convertToRem(14);
     color: var(--Pledge-Font);
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 
 .card-rewards__description {
   font-size: f.convertToRem(14);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--Secondary-Font);
-  line-height: 140%;
+  line-height: 1.9;
 }
 
 .card-rewards__counter {
@@ -119,6 +120,82 @@ body {
     font-size: f.convertToRem(16);
     color: var(--Secondary-Font);
     font-weight: 500;
+  }
+}
+
+/* ------------------
+  REWARDS MODAL
+-------------------*/
+
+.modal__header {
+
+  h3 {
+    font-size: f.convertToRem(20);  
+    font-weight: 700;
+  }
+
+  p {
+    font-size: f.convertToRem(14);
+    line-height: 1.7;
+    color: var(--Secondary-Font);
+    font-weight: 400;
+  }
+
+}
+
+.card-modal__header--leftSide {
+
+  h3, p {
+    font-size: f.convertToRem(16);
+    font-weight: 700;
+  }
+  
+  p {
+    color: var(--Pledge-Font);
+  }
+
+}
+
+.card-modal__description {
+  font-size: f.convertToRem(14);
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--Secondary-Font);
+}
+
+.card-modal__counter,
+.card-modal__counter-desktop {
+
+    font-size: f.convertToRem(18);
+    font-weight: 700;
+
+  span {
+    font-size: f.convertToRem(16);
+    font-weight: 400;
+    color: var(--Secondary-Font);
+  }
+}
+
+
+.card-modal__pledge-bottom {
+
+  label {
+    font-size: f.convertToRem(14);
+    color: var(--Secondary-Font);
+  }
+}
+
+.card-modal__inputNumber {
+
+  span {
+    color: var(--Secondary-Font);
+    font-size: f.convertToRem(16);
+  }
+
+  input {
+    font-size: f.convertToRem(16);
+    font-weight: 700;
+    font-family: inherit;
   }
 }
 
@@ -398,7 +475,6 @@ footer {
     }
 
     &.active {
-
       .bookmark__img {
         filter: invert(36%) sepia(14%) saturate(1933%) hue-rotate(127deg) brightness(105%) contrast(98%);
       }
@@ -417,7 +493,6 @@ footer {
       }
     }
   }
-
 }
 
 /* ------------------
@@ -443,7 +518,6 @@ footer {
 }
 
 .bulletPoint {
-
   position: relative;
   margin-bottom: f.convertToRem(24);
 
@@ -590,7 +664,7 @@ footer {
 .modal__header,
 .modal__header-top,
 .card__header,
-.card__description {
+.card-modal__description {
   margin-bottom: f.convertToRem(22);
 }
 
@@ -601,18 +675,30 @@ footer {
 }
 
 .card-modal {
+  @extend .card-rewards__cardSecondary;
   display: flex;
   flex-direction: column;
+  padding: 0;
 
   &.active {
     border: 2px solid var(--border-modal-card-active);
   }
 }
 
+.card-modal-padding {
+  padding: f.convertToRem(22);
+}
+
 .card-modal__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: f.convertToRem(20);
+  background-color: #FFF;
+
+  .radio-button {
+    margin-right: f.convertToRem(14);
+  }
 }
 
 .card-modal__header--leftSide {
@@ -620,7 +706,7 @@ footer {
   align-items: center;
 }
 
-.card__pledge {
+.card-modal__pledge-title {
 
   @include m.breakPointL {
     display: flex;
@@ -632,11 +718,12 @@ footer {
 
     @include m.breakPointL {
       margin-bottom: 0;
+      margin-right: f.convertToRem(14);
     }
   }
 }
 
-.reward-counter-desktop {
+.card-modal__counter-desktop {
   display: none;
 
   @include m.breakPointL {
@@ -644,25 +731,103 @@ footer {
   }
 }
 
-.card__description {
+.card-modal__description {
+
+  @include m.breakPointL {
+    margin-left: f.convertToRem(34);  
+  }
 }
 
-.card__counter {
+.card-modal__counter {
   @include m.breakPointL {
     display: none;
   }
 }
 
-.card__pledge-bottom {
-  display: none;
+.card-modal__pledge-bottom {
+  display: block;
+  text-align: center;
+  
+  @include m.breakPointL {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+  }
+
+  .pledge-action {
+    display: flex;
+    justify-content: space-between;
+
+    @include m.breakPointL {
+      width: 35%;
+    }
+  }
+
+  label {
+    display: block;
+    margin-bottom: f.convertToRem(20);
+
+    @include m.breakPointL {
+      width: 50%;
+      margin-bottom: 0;
+    }
+  }
+
+  .card-modal__inputNumber {
+    display: flex;
+    position: relative;
+    width: 40%;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+    }
+
+    input {
+      outline: none;
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid var(--border-inputNumber);
+      padding: 0 10px 1px 35px;
+      
+      &:focus,
+      &:active {
+        border: 1px solid var(--border-inputNumber-focus);
+      }
+    }
+  }
+
+  button {
+    width: 40%;
+  }
 }
+
+.pledge-separator {
+  background-color: var(--background-separator);
+  width: 100%;
+  border: none;
+  height: 2px;
+}
+
+// .card-modal__pledge-bottom::before { //22px mobile 42px en desktop 
+//   content: "";
+//   position: absolute;
+//   width: 100%;
+//   height: 3px;
+//   left: 0rem;
+//   right: 0rem;
+//   background-color: violet;
+// }
 
 
 /* ------------
   COMPONENTS
 -------------*/
 
-.button {
+.btn {
   background-color: var(--backgroundButton);
   padding: f.convertToRem(16) f.convertToRem(0);
   border-radius: 22px;
@@ -671,7 +836,7 @@ footer {
   color: #FFF;
 
   &--disabled {
-    @extend .button;
+    @extend .btn;
     background-color: var(--backgroundButton-disabled);
   }
 
@@ -680,18 +845,25 @@ footer {
   }
 }
 
-/* ====
+/*=====
   MODAL
-=====*/
+======*/
 
 .overlay {
   position:fixed;
-  overflow-y: scroll;
   inset: 0;
   background-color: var(--overlay-modal);
   z-index: 30;
   display: grid;
   place-items: center;
+}
+
+.reward-modal {
+  display: none;
+
+  &.active {
+    display: block
+  }
 }
 
 .modal {

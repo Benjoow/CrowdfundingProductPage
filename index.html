@@ -53,7 +53,7 @@
           <h1>Mastercraft Bamboo Monitor Riser</h1>
           <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
           <div class="content__bottom">
-            <button class="button">Back this project</button>
+            <button class="btn">Back this project</button>
             <div class="bookmark">
               <img class="bookmark__img" src="./src/images/icon-bookmark.svg" alt="Bookmark">
               <span>Bookmark</span>
@@ -107,7 +107,7 @@
               you’ll be added to a special Backer member list.</p>
             <div class="card-rewards__bottomContent">
               <p class="card-rewards__counter">101 <span>left</span></p>
-              <button class="button card-rewards__button">Select Reward</button>
+              <button class="btn card-rewards__button">Select Reward</button>
             </div>
           </div>
 
@@ -120,7 +120,7 @@
                 member list. Shipping is included.</p>
               <div class="card-rewards__bottomContent">
                 <p class="card-rewards__counter">64 <span>left</span></p>
-                <button class="button card-rewards__button">Select Reward</button>
+                <button class="btn card-rewards__button">Select Reward</button>
               </div>
           </div>
 
@@ -133,7 +133,7 @@
               to our Backer member list. Shipping is included.</p>
             <div class="card-rewards__bottomContent">
               <p class="card-rewards__counter">0 <span>left</span></p>
-              <button class="button--disabled card-rewards__button">Out of Stock</button>
+              <button class="btn--disabled card-rewards__button">Out of Stock</button>
             </div>
           </div>
 
@@ -145,8 +145,8 @@
   </main>
 
 
-  <div class="overlay">
-    <div class="container card modal">
+  <div class="overlay reward-modal">
+    <div class="container card">
       <div class="modal__header">
         <div class="modal__header-top">
           <h3>Back this project</h3>
@@ -158,131 +158,134 @@
       <div class="card-rewards__cards">
 
         <label for="noReward">
-          <div class="card-rewards__cardSecondary card-modal">
-            <div class="card-modal__header">
-              <div class="card-modal__header--leftSide">
-                <input type="radio" id="noReward" name="reward">
-                <div class="radio-button"></div>
-                <h3>Pledge with no reward</h3>
-              </div>
-            </div>
-            <p class="card__description">Choose to support us without a reward if you simply believe in our project. As a backer, 
-              you will be signed up to receive product updates via email.</p>
-            <div class="card__pledge-bottom">
-              <p>Enter your pledge</p>
-              <input type="number">
-              <button class="button">Continue</button>
-            </div>
-          </div>
-        </label>
-
-
-        <label for="reward25">
-          <div class="card-rewards__cardSecondary card-modal">
-            <div class="card-modal__header">
-              <div class="card-modal__header--leftSide">
-                <input type="radio" id="reward25" name="reward">
-                <div class="radio-button"></div>
-                <div class="card__pledge">
-                  <h3>Bambo Stand</h3>
-                  <p>Pledge $25 or more</p>
+          <div class="card-modal">
+            <div class="card-modal-padding">
+              <div class="card-modal__header">
+                <div class="card-modal__header--leftSide">
+                  <input type="radio" id="noReward" name="reward">
+                  <div class="radio-button"></div>
+                  <h3>Pledge with no reward</h3>
                 </div>
               </div>
-              <p class="reward-counter-desktop">101<span>left</span></p>
+              <p class="card-modal__description">Choose to support us without a reward if you simply believe in our project. As a backer, 
+                you will be signed up to receive product updates via email.</p>
             </div>
-            <p class="card__description">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
-              you’ll be added to a special Backer member list.</p>
-            <div class="card__counter">
-              <p>101<span>left</span></p>
-            </div>
-            <div class="card__pledge-bottom">
-              <p>Enter your pledge</p>
-              <input type="number" value="25">
-              <button class="button">Continue</button>
+            <hr class="pledge-separator">
+            <div class="card-modal__pledge-bottom card-modal-padding">
+              <label for="pledge">Enter your pledge</label>
+              <div class="pledge-action">
+                <div class="card-modal__inputNumber">
+                  <span>$</span>
+                  <input type="number" id="pledge" name="pledge" placeholder="...">
+                </div>
+                <button class="btn">Continue</button>                
+              </div>
             </div>
           </div>
         </label>
 
-        <!-- <div class="card-rewards__cardSecondary">
-          <div class="card-rewards__pledge">
-            <input type="radio">
-            <h3>Black Edition Stand</h3>
-            <p>Pledge $75 or more</p>
-          </div>
-          <p>You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
-            member list. Shipping is included.</p>
-          <div>
-            <p>64<span>left</span></p>
-          </div>
-          <div>
-            <p>Enter your pledge</p>
-            <input type="number" value="75">
-            <button class="button">Continue</button>
-          </div>
-        </div>
 
-        <div class="card-rewards__cardSecondary">
-          <div class="card-rewards__pledge">
-            <input type="radio">
-            <h3>Mahogany Special Edition</h3>
-            <p>Pledge $200 or more</p>
+        <label for="reward-BomboEdition">
+          <div class="card-modal">
+            <div class="card-modal-padding">
+              <div class="card-modal__header">
+                <div class="card-modal__header--leftSide">
+                  <input type="radio" id="reward-BomboEdition" name="reward">
+                  <div class="radio-button"></div>
+                  <div class="card-modal__pledge-title">
+                    <h3>Bambo Stand</h3>
+                    <p>Pledge $25 or more</p>
+                  </div>
+                </div>
+                <p class="card-modal__counter-desktop">101 <span>left</span></p>
+              </div>
+              <p class="card-modal__description">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and
+                you’ll be added to a special Backer member list.</p>
+              <p class="card-modal__counter">101 <span>left</span></p>
+            </div>
+            <hr class="pledge-separator">
+            <div class="card-modal__pledge-bottom card-modal-padding">
+              <label for="pledge">Enter your pledge</label>
+              <div class="pledge-action">
+                <div class="card-modal__inputNumber">
+                  <span>$</span>
+                  <input type="number" id="pledge" name="pledge" value="25">
+                </div>
+                <button class="btn">Continue</button>
+              </div>
+            </div>
           </div>
-          <p>You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
-            to our Backer member list. Shipping is included.</p>
-          <div>
-            <p>0<span>left</span></p>
+        </label>
+
+
+        <label for="reward-BlackEdition">
+          <div class="card-modal">
+            <div class="card-modal-padding">
+              <div class="card-modal__header">
+                <div class="card-modal__header--leftSide">
+                  <input type="radio" id="reward-BlacEdition" name="reward">
+                  <div class="radio-button"></div>
+                  <div class="card-modal__pledge-title">
+                    <h3>Black Edition Stand</h3>
+                    <p>Pledge $75 or more</p>
+                  </div>
+                </div>
+                <p class="card-modal__counter-desktop">64 <span>left</span></p>
+              </div>
+              <p class="card-modal__description">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer
+                member list. Shipping is included.</p>
+              <p class="card-modal__counter">64 <span>left</span></p>
+            </div>
+            <hr class="pledge-separator">
+            <div class="card-modal__pledge-bottom card-modal-padding">
+              <label for="pledge">Enter your pledge</label>
+              <div class="pledge-action">
+                <div class="card-modal__inputNumber">
+                  <span>$</span>
+                  <input type="number" id="pledge" name="pledge" value="75">
+                </div>
+                <button class="btn">Continue</button>
+              </div>
+            </div>
           </div>
-          <div>
-            <p>Enter your pledge</p>
-            <input type="number" value="200">
-            <button class="button">Continue</button>
+        </label>
+
+
+        <label for="reward-SpecialEdition">
+          <div class="card-modal">
+            <div class="card-modal-padding">
+              <div class="card-modal__header">
+                <div class="card-modal__header--leftSide">
+                  <input type="radio" id="rewardSpecialEdition" name="reward">
+                  <div class="radio-button"></div>
+                  <div class="card-modal__pledge-title">
+                    <h3>Mahogany Special Edition</h3>
+                    <p>Pledge $200 or more</p>
+                  </div>
+                </div>
+                <p class="card-modal__counter-desktop">0 <span>left</span></p>
+              </div>
+              <p class="card-modal__description">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added
+                to our Backer member list. Shipping is included.</p>
+              <p class="card-modal__counter">0 <span>left</span></p>
+            </div>
+            <hr class="pledge-separator">
+            <div class="card-modal__pledge-bottom card-modal-padding">
+              <label for="pledge">Enter your pledge</label>
+              <div class="pledge-action">
+                <div class="card-modal__inputNumber">
+                  <span>$</span>
+                  <input type="number" id="pledge" name="pledge" value="200">
+                </div>
+                <button class="btn">Continue</button>
+              </div>
+            </div>
           </div>
-        </div> -->
+        </label>
 
       </div>
     </div>
   </div>
-  <!-- Selection modal start -->
-
-  <!-- Back this project
-  
-
-  
-
-  
-  
-  
-    -->
-
-  <!-- Selected pledge start -->
-  <!-- 
-  $25
-  Continue -->
-  <!-- Selected pledge end -->
-
-  <!-- 
-  
-  
-   left -->
-
-  <!-- Selected pledge start -->
-  <!-- 
-  $75
-  Continue -->
-  <!-- Selected pledge end -->
-
-  <!-- 
-  Pledge $200 or more
-  
-  0 left -->
-
-  <!-- Selected pledge  start -->
-  <!-- Enter your pledge
-  $200
-  Continue -->
-  <!-- Selected pledge end -->
-
-  <!-- Selection modal end -->
 
   <!-- Success modal start -->
 
