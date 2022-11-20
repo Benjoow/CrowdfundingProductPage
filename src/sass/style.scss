@@ -99,7 +99,7 @@ body {
   p {
     font-size: f.convertToRem(14);
     color: var(--Pledge-Font);
-    font-weight: 400;
+    font-weight: 500;
   }
 }
 
@@ -148,6 +148,10 @@ body {
   h3, p {
     font-size: f.convertToRem(16);
     font-weight: 700;
+
+    &:hover {
+      color: var(--border-modal-card-active);
+    }
   }
   
   p {
@@ -179,7 +183,7 @@ body {
 
 .card-modal__pledge-bottom {
 
-  label {
+  p {
     font-size: f.convertToRem(14);
     color: var(--Secondary-Font);
   }
@@ -196,6 +200,25 @@ body {
     font-size: f.convertToRem(16);
     font-weight: 700;
     font-family: inherit;
+  }
+}
+
+
+/* ------------------
+  SUCCESS MODAL
+-------------------*/
+
+.modal-success {
+
+  h3 {
+    font-weight: 700;
+    font-size: f.convertToRem(20);
+  }
+
+  p {
+    font-size: f.convertToRem(14);
+    line-height: 1.7;
+    color: var(--Secondary-Font);
   }
 }
 
@@ -238,6 +261,19 @@ main {
   background-color:var(--backgroundMainSection);
 }
 
+label {
+
+  &.disable::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    inset: 0;
+    background: hsl(0, 0%, 100%, 0.5);
+    z-index: 1;
+  }
+
+}
+
 footer {
   grid-area: footer;
 }
@@ -249,7 +285,7 @@ footer {
 
 .container {
   width: min(90%, 420px);
-  margin: 0 auto;
+  margin: auto;
 
  @include m.breakPointL {
     width: min(90%, 820px);
@@ -275,6 +311,7 @@ footer {
     padding: f.convertToRem(52) f.convertToRem(42);
   }
 }
+
 
 /* ------------------
   HEADER
@@ -554,16 +591,15 @@ footer {
   border-radius: 25px;
   overflow: hidden;
   margin-top: f.convertToRem(22);
-  
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 89.914%;
-    height: inherit;
-    background-color: var(--progressBarLoading);
-    border-radius: inherit;
-  }
+  z-index: 6;
+}
+
+.actual-progression {
+  position: relative;
+  z-index: 7;
+  background-color: var(--progressBarLoading);
+  width: 89.914%;
+  height: 100%;
 }
 
 /* ------------------
@@ -651,14 +687,14 @@ footer {
 -------------------*/
 
 
-.modal__close {
+#modal__close {
   width: 16px;
   height: 16px;
   cursor: pointer;
 
-  &:hover {
-    // Fix Cross color
-  }
+  // &:hover {
+  //   // Fix Cross color
+  // }
 }
 
 .modal__header,
@@ -682,6 +718,12 @@ footer {
 
   &.active {
     border: 2px solid var(--border-modal-card-active);
+  }
+
+  &.disabled {
+    position: absolute;
+    inset: 0;
+    background-color: gray;
   }
 }
 
@@ -744,25 +786,39 @@ footer {
   }
 }
 
+
 .card-modal__pledge-bottom {
-  display: block;
+  display: none;
   text-align: center;
-  
+
+  &.active {
+    display: block;
+  }
+
+  p {
+    margin-bottom: f.convertToRem(16);
+  }
+
   @include m.breakPointL {
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     text-align: start;
-  }
 
-  .pledge-action {
-    display: flex;
-    justify-content: space-between;
-
-    @include m.breakPointL {
-      width: 35%;
+    &.active {
+      display: flex; 
     }
+
+    p {
+      margin-bottom: f.convertToRem(0);
+    }
+
   }
+
+  // .pledge-action {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
 
   label {
     display: block;
@@ -777,18 +833,18 @@ footer {
   .card-modal__inputNumber {
     display: flex;
     position: relative;
-    width: 40%;
+    justify-content: space-around;
 
     span {
       position: absolute;
       top: 50%;
-      left: 20px;
+      left: 34px;
       transform: translateY(-50%);
     }
 
     input {
       outline: none;
-      width: 100%;
+      width: 40%;
       border-radius: 22px;
       border: 1px solid var(--border-inputNumber);
       padding: 0 10px 1px 35px;
@@ -812,15 +868,39 @@ footer {
   height: 2px;
 }
 
-// .card-modal__pledge-bottom::before { //22px mobile 42px en desktop 
-//   content: "";
-//   position: absolute;
-//   width: 100%;
-//   height: 3px;
-//   left: 0rem;
-//   right: 0rem;
-//   background-color: violet;
-// }
+
+/* ------------------
+   MODAL SUCCESS
+-------------------*/
+
+.modal-success {
+  @extend .modal;
+  width: min(90%, 420px);
+  padding: f.convertToRem(34) f.convertToRem(22);
+  text-align: center;  
+  
+  @include m.breakPointL {
+  padding: f.convertToRem(34) f.convertToRem(22);
+  width: min(90%, 520px);
+  }
+
+  &.active {
+    display: grid;
+  }
+
+  img {
+    width: 64px;
+    height: 64px;
+  }
+
+  img, h3, p {
+    margin-bottom: f.convertToRem(28);
+  }
+
+  .btn {
+    width: Min(35%, 140px);
+  }
+}
 
 
 /* ------------
@@ -829,11 +909,12 @@ footer {
 
 .btn {
   background-color: var(--backgroundButton);
-  padding: f.convertToRem(16) f.convertToRem(0);
+  padding: f.convertToRem(16) 0;
   border-radius: 22px;
   font-size: f.convertToRem(14);
   font-weight: 700;
   color: #FFF;
+  
 
   &--disabled {
     @extend .btn;
@@ -853,30 +934,24 @@ footer {
   position:fixed;
   inset: 0;
   background-color: var(--overlay-modal);
-  z-index: 30;
-  display: grid;
-  place-items: center;
-}
-
-.reward-modal {
+  z-index: 530;
+  overflow-y: auto;
   display: none;
+  place-items: center;
 
   &.active {
-    display: block
+    display: grid;
   }
 }
 
 .modal {
+  @extend .card; 
   background-color:var(--background-modal);
 }
 
 /* ============
   RADIO BUTTON
 =============*/
-
-input[type="radio"] {
-  display: none;
-}
 
 .radio-button {
   width: 20px;

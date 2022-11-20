@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./src/images/favicon-32x32.png">
   <link rel="stylesheet" href="./src/sass/style.scss">
@@ -59,19 +59,19 @@
               <span>Bookmark</span>
             </div>
           </div>
-        </section>
+      </section>
 
       <section class="card container card-bullets">
         <div class="card-bullets__points">
           <div class="bulletPoint">
             <ul>
-              <li>$89,914</li>
+              <li id="totalPledge">$89,914</li>
               <li>of $100,000 backed</li>
             </ul> 
           </div>
           <div class="bulletPoint">
             <ul>
-              <li>5,007</li>
+              <li id="totalBackers">5,007</li>
               <li>total backers</li>
             </ul> 
           </div>
@@ -82,7 +82,9 @@
             </ul>
           </div>
         </div>
-      <div class="progression-Bar"></div>
+      <div class="progression-Bar">
+        <div class="actual-progression"></div>
+      </div>
       </section>
 
       <section class="card container card-rewards">
@@ -138,28 +140,29 @@
           </div>
 
         </div>
-
       </section>
-
-    </div>    
+    </div>
   </main>
 
+    <!-- Reward modal START -->
 
-  <div class="overlay reward-modal">
-    <div class="container card">
-      <div class="modal__header">
+
+  <div class="overlay modal-trigger" data-modal="modal-reward">
+    <div class="container modal">
+      <div class="modal__header"> 
         <div class="modal__header-top">
           <h3>Back this project</h3>
-          <img class="modal__close" src="./src/images/icon-close-modal.svg" alt="modal close">
+          <img class="modal-trigger" id="modal__close" src="./src/images/icon-close-modal.svg" alt="modal close">
         </div>
         <p>Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
       </div>
 
+      
       <div class="card-rewards__cards">
 
         <label for="noReward">
           <div class="card-modal">
-            <div class="card-modal-padding">
+          <div class="card-modal-padding">
               <div class="card-modal__header">
                 <div class="card-modal__header--leftSide">
                   <input type="radio" id="noReward" name="reward">
@@ -172,14 +175,12 @@
             </div>
             <hr class="pledge-separator">
             <div class="card-modal__pledge-bottom card-modal-padding">
-              <label for="pledge">Enter your pledge</label>
-              <div class="pledge-action">
-                <div class="card-modal__inputNumber">
-                  <span>$</span>
-                  <input type="number" id="pledge" name="pledge" placeholder="...">
-                </div>
-                <button class="btn">Continue</button>                
-              </div>
+              <p>Enter your pledge</p>
+              <form class="card-modal__inputNumber" method="POST">
+                <span>$</span>
+                <input type="number" id="pledge" name="noReward" placeholder="..." min="0" required>
+                <button class="btn btn-reward" type="submit" data-modal="success-modal">Continue</button>                
+              </form>
             </div>
           </div>
         </label>
@@ -205,14 +206,12 @@
             </div>
             <hr class="pledge-separator">
             <div class="card-modal__pledge-bottom card-modal-padding">
-              <label for="pledge">Enter your pledge</label>
-              <div class="pledge-action">
-                <div class="card-modal__inputNumber">
-                  <span>$</span>
-                  <input type="number" id="pledge" name="pledge" value="25">
-                </div>
-                <button class="btn">Continue</button>
-              </div>
+              <p>Enter your pledge</p>
+              <form class="card-modal__inputNumber" method="POST">
+                <span>$</span>
+                <input type="number" id="pledge" name="reward-BomboEdition" value="25" min="25" required>
+                <button type="submit" class="btn btn-reward" data-modal="success-modal">Continue</button>
+              </form>
             </div>
           </div>
         </label>
@@ -223,7 +222,7 @@
             <div class="card-modal-padding">
               <div class="card-modal__header">
                 <div class="card-modal__header--leftSide">
-                  <input type="radio" id="reward-BlacEdition" name="reward">
+                  <input type="radio" id="reward-BlackEdition" name="reward">
                   <div class="radio-button"></div>
                   <div class="card-modal__pledge-title">
                     <h3>Black Edition Stand</h3>
@@ -238,25 +237,23 @@
             </div>
             <hr class="pledge-separator">
             <div class="card-modal__pledge-bottom card-modal-padding">
-              <label for="pledge">Enter your pledge</label>
-              <div class="pledge-action">
-                <div class="card-modal__inputNumber">
-                  <span>$</span>
-                  <input type="number" id="pledge" name="pledge" value="75">
-                </div>
-                <button class="btn">Continue</button>
-              </div>
+              <p>Enter your pledge</p>
+              <form class="card-modal__inputNumber" method="POST">
+                <span>$</span>
+                <input type="number" id="pledge" name="reward-BlackEdition" value="75" min="75" required>
+                <button type="submit" class="btn btn-reward" data-modal="success-modal">Continue</button>
+              </form>
             </div>
           </div>
         </label>
 
 
         <label for="reward-SpecialEdition">
-          <div class="card-modal">
+            <div class="card-modal disable">
             <div class="card-modal-padding">
               <div class="card-modal__header">
                 <div class="card-modal__header--leftSide">
-                  <input type="radio" id="rewardSpecialEdition" name="reward">
+                  <input type="radio" id="reward-SpecialEdition" name="reward">
                   <div class="radio-button"></div>
                   <div class="card-modal__pledge-title">
                     <h3>Mahogany Special Edition</h3>
@@ -271,28 +268,35 @@
             </div>
             <hr class="pledge-separator">
             <div class="card-modal__pledge-bottom card-modal-padding">
-              <label for="pledge">Enter your pledge</label>
-              <div class="pledge-action">
-                <div class="card-modal__inputNumber">
-                  <span>$</span>
-                  <input type="number" id="pledge" name="pledge" value="200">
-                </div>
-                <button class="btn">Continue</button>
-              </div>
+              <p>Enter your pledge</p>
+              <form class="card-modal__inputNumber" method="POST">
+                <span>$</span>
+                <input type="number" id="pledge" name="reward-SpecialEdition" value="200" min="200" disabled>
+                <button type="submit" class="btn--disabled btn-reward">Out of Stock</button>
+              </form>
             </div>
           </div>
         </label>
 
       </div>
+
     </div>
   </div>
+  
+  <!-- Reward modal END -->
+
 
   <!-- Success modal start -->
 
-  <!-- Thanks for your support!
-  Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
-  an email once our campaign is completed.
-  Got it! -->
+  <div class="overlay modal-trigger" data-modal="modal-success">
+    <div class="modal-success">
+      <img src="./src/images/icon-check.svg" alt="checkLogo">
+      <h3>Thanks for your support!</h3>
+      <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
+        an email once our campaign is completed.</p>
+      <button class="btn confirm modal-trigger">Got it!</button>
+    </div>
+  </div>
 
   <!-- Success modal end -->
 
