@@ -691,10 +691,11 @@ footer {
   width: 16px;
   height: 16px;
   cursor: pointer;
+  filter: opacity(0.4);
 
-  // &:hover {
-  //   // Fix Cross color
-  // }
+  &:hover {
+    filter: opacity(1);
+  }
 }
 
 .modal__header,
@@ -812,13 +813,7 @@ footer {
     p {
       margin-bottom: f.convertToRem(0);
     }
-
   }
-
-  // .pledge-action {
-  //   display: flex;
-  //   justify-content: space-between;
-  // }
 
   label {
     display: block;
@@ -938,6 +933,8 @@ footer {
   overflow-y: auto;
   display: none;
   place-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   &.active {
     display: grid;
@@ -947,6 +944,12 @@ footer {
 .modal {
   @extend .card; 
   background-color:var(--background-modal);
+  overflow-y: hidden;
+}
+
+.modal,
+.modal-success {
+  animation: modal-display 150ms linear;
 }
 
 /* ============
@@ -976,3 +979,18 @@ input[type="radio"]:checked + .radio-button::after {
   transform: scale(1);
 }
 
+/* ============
+  MODAL ANIMATION DISPLAY
+=============*/
+
+@keyframes modal-display {
+  from {
+    top: 270px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}

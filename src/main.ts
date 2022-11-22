@@ -129,8 +129,8 @@ const selectedCardRadioButton = () => {
       resetRadioCardsStyle();
       if(radiobutton.checked) {
         radiobutton.closest('.card-modal')?.classList.add('active');
-        radiobutton.closest('.card-modal')!.querySelector('.card-modal__pledge-bottom')?.classList.add('active');
-      }      
+        radiobutton.closest('.card-modal')?.querySelector('.card-modal__pledge-bottom')?.classList.add('active');
+      }
     })
   })
 }
@@ -153,7 +153,7 @@ const init = () => {
   rewardButtons?.forEach( rewardButton => {
     rewardButton.addEventListener('click', () => toggleModal("modal-reward"));
   })
-  
+
   toggleMenu();
   bookmarkProject();
   selectedCardRadioButton();
