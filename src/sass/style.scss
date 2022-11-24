@@ -379,18 +379,18 @@ footer {
   border-radius: 12px;
 }
 
-.container__mobile-nav > div {
+.container__mobile-nav > li {
   display: block;
   padding: 24px 0;
+  margin-left: 16px;
   
   &:not(:last-child) {
     border-bottom: 1px solid hsl(0, 0%, 90%);
   }
 }
 
-.container__mobile-nav div li {
-  margin-left: 16px;
-}
+// .container__mobile-nav div li {
+// }
 
 #nav__toggle {
   position:relative;
