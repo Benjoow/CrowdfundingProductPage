@@ -87,8 +87,8 @@ const convertToString = (totalNumber: number) : string => {
 const addPledge = () => {
   const forms: NodeListOf<HTMLFormElement> = document.querySelectorAll('.card-modal__inputNumber');
   const progressionBar: HTMLDivElement = document.querySelector('.actual-progression')!;
-  let totalBackers: number = convertToInt(document.querySelector('#totalBackers')?.innerHTML!);
-  let totalPledge: number = convertToInt(document.querySelector('#totalPledge')?.innerHTML.slice(1)!);
+  let totalBackers: number = convertToInt(document.querySelector('#totalBackers')?.textContent!);
+  let totalPledge: number = convertToInt(document.querySelector('#totalPledge')?.textContent?.slice(1)!);
 
   forms.forEach( form => {
     form.addEventListener('submit', (event) => {
@@ -101,8 +101,8 @@ const addPledge = () => {
       let progress = 100 * totalPledge / 100000;
       if(progress > 100) progress = 100;
 
-      document.querySelector('#totalPledge')!.innerHTML = "$" + convertToString(totalPledge);
-      document.querySelector('#totalBackers')!.innerHTML = convertToString(totalBackers);
+      document.querySelector('#totalPledge')!.textContent = "$" + convertToString(totalPledge);
+      document.querySelector('#totalBackers')!.textContent = convertToString(totalBackers);
       progressionBar.style.width = `${progress}%`;
       toggleModal('modal-reward');
       toggleModal('modal-success');
