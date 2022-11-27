@@ -6,7 +6,7 @@ const toggleBodyScroll = (elem: HTMLDivElement | null) => {
 
 const toggleMenu = () => {
   const burger_menu: HTMLDivElement = document.querySelector("#nav__toggle")!;
-  const modalOverlay: HTMLDivElement = document.querySelector(".nav-bar__modal-overlay")!;
+  const modalOverlay: HTMLDivElement = document.querySelector("#nav-bar")!;
 
   burger_menu.addEventListener('click', () => {
     burger_menu.classList.toggle('active');
