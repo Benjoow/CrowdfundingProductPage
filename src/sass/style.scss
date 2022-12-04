@@ -12,10 +12,7 @@ body {
   font-family: 'Commissioner', sans-serif;
 }
 
-// .container__mobile-nav div a > li {
-// }
-
-#container-nav {
+#nav-list {
   color: var(--MenuColor);
   font-size: 18px;
   font-weight: 500;
@@ -369,7 +366,7 @@ footer {
   }
 }
 
-#container-nav {
+#nav-list {
   position: relative;
   width: min(90%, 420px);
   margin: auto;
@@ -380,15 +377,6 @@ footer {
   color: #000;
   flex-direction: column;
 
-  &> li {
-    padding: 24px 0;
-    margin-left: 16px;
-    
-    &:not(:last-child) {
-      border-bottom: 1px solid hsl(0, 0%, 90%);
-    }  
-  }
-
   @include m.breakPointL {
     display: flex;
     gap: f.convertToRem(20);
@@ -398,10 +386,33 @@ footer {
     color: #FFF;
     flex-direction: row;
     width: unset;
+  }
+}
 
-    &> li:not(:last-child) {
-      border-bottom: unset;
-    }
+.nav-item {
+  position: relative;
+  padding: 24px 0;
+  margin-left: 16px;
+  background-color: #FFF;      
+
+  &:not(:last-child) {
+    border-bottom: unset;
+  }
+}
+
+
+@include m.breakPointL {
+  .nav-item:not(:last-child) {
+      border-bottom: 1px solid hsl(0, 0%, 90%);
+  }
+
+  .nav-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
   }
 }
 
